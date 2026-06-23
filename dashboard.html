@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - صندوق عائلة علوان</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-vault"></i>
+                <span>صندوق علوان</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>لوحة التحكم</span>
+                </a>
+                <a href="#members" class="nav-item" data-page="members">
+                    <i class="fas fa-users"></i>
+                    <span>الأعضاء</span>
+                </a>
+                <a href="#subscriptions" class="nav-item" data-page="subscriptions">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>الاشتراكات</span>
+                </a>
+                <a href="#loans" class="nav-item" data-page="loans">
+                    <i class="fas fa-handshake"></i>
+                    <span>القروض</span>
+                </a>
+                <a href="#expenses" class="nav-item" data-page="expenses">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>المصروفات</span>
+                </a>
+                <a href="#reports" class="nav-item" data-page="reports">
+                    <i class="fas fa-file-alt"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="#settings" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="toggle-sidebar" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="page-title">لوحة التحكم</h1>
+                </div>
+
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="globalSearch" placeholder="ابحث...">
+                    </div>
+
+                    <div class="theme-toggle">
+                        <button onclick="toggleTheme()" class="theme-btn">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+
+                    <div class="user-profile">
+                        <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23D4AF37'/%3E%3Ctext x='50' y='60' font-size='40' fill='%230F172A' text-anchor='middle' font-family='Arial' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E" alt="صورة المستخدم">
+                        <div class="user-menu">
+                            <a href="#" onclick="goToProfile()">الملف الشخصي</a>
+                            <a href="#" onclick="logout()">تسجيل الخروج</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page active">
+                    <!-- Statistics Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon primary">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>إجمالي الرصيد</h3>
+                                <p class="stat-value" id="totalBalance">0.00 ر.س</p>
+                                <span class="stat-change positive">↑ 12%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon accent">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>إجمالي الاشتراكات</h3>
+                                <p class="stat-value" id="totalSubscriptions">0.00 ر.س</p>
+                                <span class="stat-change positive">↑ 8%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon warning">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>القروض النشطة</h3>
+                                <p class="stat-value" id="activeLoans">0 قرض</p>
+                                <span class="stat-change">--</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon success">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>القروض المسددة</h3>
+                                <p class="stat-value" id="completedLoans">0 قرض</p>
+                                <span class="stat-change positive">↑ 5%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon danger">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>إجمالي المصروفات</h3>
+                                <p class="stat-value" id="totalExpenses">0.00 ر.س</p>
+                                <span class="stat-change positive">↓ 3%</span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon info">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>عدد الأعضاء</h3>
+                                <p class="stat-value" id="membersCount">0 عضو</p>
+                                <span class="stat-change positive">↑ 2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <h3>توزيع الإيرادات والمصروفات</h3>
+                            <canvas id="revenueExpenseChart"></canvas>
+                        </div>
+
+                        <div class="chart-card">
+                            <h3>الاشتراكات الشهرية</h3>
+                            <canvas id="subscriptionsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions -->
+                    <div class="recent-section">
+                        <div class="section-header">
+                            <h3>آخر العمليات</h3>
+                            <a href="#" class="view-all">عرض الكل</a>
+                        </div>
+                        <table class="transactions-table">
+                            <thead>
+                                <tr>
+                                    <th>رقم العملية</th>
+                                    <th>النوع</th>
+                                    <th>العضو</th>
+                                    <th>المبلغ</th>
+                                    <th>التاريخ</th>
+                                    <th>الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentTransactions">
+                                <!-- Transactions will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Placeholder for other pages -->
+                <div id="members-page" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h2>إدارة الأعضاء</h2>
+                        <button class="btn btn-primary" onclick="showAddMemberForm()">
+                            <i class="fas fa-plus"></i> إضافة عضو
+                        </button>
+                    </div>
+                    <div id="members-container"></div>
+                </div>
+
+                <div id="subscriptions-page" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h2>إدارة الاشتراكات</h2>
+                        <button class="btn btn-primary" onclick="showAddSubscriptionForm()">
+                            <i class="fas fa-plus"></i> إضافة اشتراك
+                        </button>
+                    </div>
+                    <div id="subscriptions-container"></div>
+                </div>
+
+                <div id="loans-page" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h2>إدارة القروض</h2>
+                        <button class="btn btn-primary" onclick="showAddLoanForm()">
+                            <i class="fas fa-plus"></i> طلب قرض جديد
+                        </button>
+                    </div>
+                    <div id="loans-container"></div>
+                </div>
+
+                <div id="expenses-page" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h2>إدارة المصروفات</h2>
+                        <button class="btn btn-primary" onclick="showAddExpenseForm()">
+                            <i class="fas fa-plus"></i> إضافة مصروف
+                        </button>
+                    </div>
+                    <div id="expenses-container"></div>
+                </div>
+
+                <div id="reports-page" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h2>التقارير والإحصائيات</h2>
+                    </div>
+                    <div id="reports-container"></div>
+                </div>
+
+                <div id="settings-page" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h2>الإعدادات</h2>
+                    </div>
+                    <div id="settings-container"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Message Container -->
+    <div id="messageContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

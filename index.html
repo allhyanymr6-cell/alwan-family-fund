@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="صندوق عائلة علوان - تطبيق إدارة صندوق العائلة">
+    <title>صندوق عائلة علوان - تسجيل الدخول</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <!-- Left Section - Branding -->
+        <div class="login-branding">
+            <div class="brand-content">
+                <div class="brand-logo">
+                    <i class="fas fa-vault"></i>
+                </div>
+                <h1>صندوق عائلة علوان</h1>
+                <p>منصة إدارة صندوق العائلة الشاملة</p>
+                <div class="brand-features">
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>إدارة مالية متقدمة</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <span>إدارة الأعضاء</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>تقارير شاملة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section - Login Form -->
+        <div class="login-form-section">
+            <div class="login-form-wrapper">
+                <div class="form-header">
+                    <h2>تسجيل الدخول</h2>
+                    <p>أدخل بيانات حسابك للمتابعة</p>
+                </div>
+
+                <!-- Tabs -->
+                <div class="login-tabs">
+                    <button class="tab-btn active" data-tab="email-tab">البريد الإلكتروني</button>
+                    <button class="tab-btn" data-tab="id-tab">رقم الهوية</button>
+                </div>
+
+                <!-- Email Login Tab -->
+                <div id="email-tab" class="tab-content active">
+                    <form id="emailLoginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">كلمة المرور</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" placeholder="أدخل كلمة المرور" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="rememberMe">
+                                <span>تذكر بيانات دخولي</span>
+                            </label>
+                            <a href="forgot-password.html" class="forgot-password">هل نسيت كلمة المرور؟</a>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">دخول</button>
+                    </form>
+                </div>
+
+                <!-- ID Login Tab -->
+                <div id="id-tab" class="tab-content">
+                    <form id="idLoginForm" class="login-form">
+                        <div class="form-group">
+                            <label for="idNumber">رقم الهوية</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-card"></i>
+                                <input type="text" id="idNumber" placeholder="أدخل رقم الهوية" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idPassword">كلمة المرور</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="idPassword" placeholder="أدخل كلمة المرور" required>
+                                <button type="button" class="toggle-password" onclick="togglePassword('idPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-full">دخول</button>
+                    </form>
+                </div>
+
+                <!-- Error/Success Messages -->
+                <div id="messageContainer"></div>
+
+                <!-- Footer -->
+                <div class="login-footer">
+                    <p>جميع الحقوق محفوظة لعائلة علوان © 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>

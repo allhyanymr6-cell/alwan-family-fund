@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأعضاء - صندوق عائلة علوان</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/members.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar (same as dashboard) -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-vault"></i>
+                <span>صندوق علوان</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>لوحة التحكم</span>
+                </a>
+                <a href="members.html" class="nav-item active" data-page="members">
+                    <i class="fas fa-users"></i>
+                    <span>الأعضاء</span>
+                </a>
+                <a href="#subscriptions" class="nav-item" data-page="subscriptions">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>الاشتراكات</span>
+                </a>
+                <a href="#loans" class="nav-item" data-page="loans">
+                    <i class="fas fa-handshake"></i>
+                    <span>القروض</span>
+                </a>
+                <a href="#expenses" class="nav-item" data-page="expenses">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>المصروفات</span>
+                </a>
+                <a href="#reports" class="nav-item" data-page="reports">
+                    <i class="fas fa-file-alt"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="#settings" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="toggle-sidebar" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="page-title">إدارة الأعضاء</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="memberSearch" placeholder="ابحث عن عضو...">
+                    </div>
+                    <div class="theme-toggle">
+                        <button onclick="toggleTheme()" class="theme-btn">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23D4AF37'/%3E%3Ctext x='50' y='60' font-size='40' fill='%230F172A' text-anchor='middle' font-family='Arial' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E" alt="صورة المستخدم">
+                        <div class="user-menu">
+                            <a href="#" onclick="goToProfile()">الملف الشخصي</a>
+                            <a href="#" onclick="logout()">تسجيل الخروج</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="page-header" style="margin-bottom: var(--spacing-xl);">
+                    <h2>قائمة الأعضاء</h2>
+                    <button class="btn btn-primary" onclick="showAddMemberForm()">
+                        <i class="fas fa-plus"></i> إضافة عضو جديد
+                    </button>
+                </div>
+
+                <!-- Members Grid -->
+                <div id="membersGrid" class="members-grid">
+                    <!-- Members will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="messageContainer"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/members.js"></script>
+</body>
+</html>
