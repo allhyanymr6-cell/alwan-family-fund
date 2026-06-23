@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقارير - صندوق عائلة علوان</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/reports.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-vault"></i>
+                <span>صندوق علوان</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item" data-page="dashboard">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>لوحة التحكم</span>
+                </a>
+                <a href="members.html" class="nav-item" data-page="members">
+                    <i class="fas fa-users"></i>
+                    <span>الأعضاء</span>
+                </a>
+                <a href="subscriptions.html" class="nav-item" data-page="subscriptions">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>الاشتراكات</span>
+                </a>
+                <a href="loans.html" class="nav-item" data-page="loans">
+                    <i class="fas fa-handshake"></i>
+                    <span>القروض</span>
+                </a>
+                <a href="expenses.html" class="nav-item" data-page="expenses">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>المصروفات</span>
+                </a>
+                <a href="reports.html" class="nav-item active" data-page="reports">
+                    <i class="fas fa-file-alt"></i>
+                    <span>التقارير</span>
+                </a>
+                <a href="settings.html" class="nav-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>الإعدادات</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>تسجيل الخروج</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <button class="toggle-sidebar" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="page-title">التقارير والإحصائيات</h1>
+                </div>
+                <div class="header-right">
+                    <div class="theme-toggle">
+                        <button onclick="toggleTheme()" class="theme-btn">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                    <div class="user-profile">
+                        <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23D4AF37'/%3E%3Ctext x='50' y='60' font-size='40' fill='%230F172A' text-anchor='middle' font-family='Arial' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E" alt="صورة المستخدم">
+                        <div class="user-menu">
+                            <a href="#" onclick="goToProfile()">الملف الشخصي</a>
+                            <a href="#" onclick="logout()">تسجيل الخروج</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="reports-header">
+                    <h2>التقارير الشاملة</h2>
+                    <div class="report-actions">
+                        <button class="btn btn-secondary" onclick="exportReportPDF()">
+                            <i class="fas fa-file-pdf"></i> تصدير PDF
+                        </button>
+                        <button class="btn btn-secondary" onclick="exportReportExcel()">
+                            <i class="fas fa-file-excel"></i> تصدير Excel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Report Tabs -->
+                <div class="report-tabs">
+                    <button class="report-tab active" data-tab="financial">التقرير المالي</button>
+                    <button class="report-tab" data-tab="subscriptions">الاشتراكات</button>
+                    <button class="report-tab" data-tab="loans">القروض</button>
+                    <button class="report-tab" data-tab="members">الأعضاء</button>
+                </div>
+
+                <!-- Report Content -->
+                <div id="financial-tab" class="report-content active">
+                    <div class="report-section">
+                        <h3>الملخص المالي</h3>
+                        <div class="report-grid">
+                            <div class="report-item">
+                                <span>إجمالي الإيرادات</span>
+                                <p id="reportTotalRevenue">0.00 ر.س</p>
+                            </div>
+                            <div class="report-item">
+                                <span>إجمالي المصروفات</span>
+                                <p id="reportTotalExpenses">0.00 ر.س</p>
+                            </div>
+                            <div class="report-item">
+                                <span>صافي الرصيد</span>
+                                <p id="reportNetBalance">0.00 ر.س</p>
+                            </div>
+                        </div>
+                        <canvas id="financialChart" style="margin-top: var(--spacing-lg);"></canvas>
+                    </div>
+                </div>
+
+                <div id="subscriptions-tab" class="report-content" style="display: none;">
+                    <div class="report-section">
+                        <h3>تقرير الاشتراكات</h3>
+                        <canvas id="subscriptionsReportChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="loans-tab" class="report-content" style="display: none;">
+                    <div class="report-section">
+                        <h3>تقرير القروض</h3>
+                        <canvas id="loansReportChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="members-tab" class="report-content" style="display: none;">
+                    <div class="report-section">
+                        <h3>تقرير الأعضاء</h3>
+                        <canvas id="membersReportChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="messageContainer"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>
