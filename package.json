@@ -1,0 +1,23 @@
+{
+  "name": "alwan-family-fund",
+  "version": "1.0.0",
+  "description": "Alwan Family Fund - Web Application for Family Savings Management",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "build": "echo 'Build process here'",
+    "test": "echo 'Testing...'"
+  },
+  "keywords": [
+    "family-fund",
+    "savings",
+    "management",
+    "arabic"
+  ],
+  "author": "Alwan Family",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^10.7.0",
+    "chart.js": "^4.4.0"
+  }
+}
