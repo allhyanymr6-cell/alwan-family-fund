@@ -1,0 +1,133 @@
+/* ================================
+   Subscriptions Styles
+   ================================ */
+
+.subscription-filters {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .subscription-filters {
+    background-color: #1E1E1E;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.filter-group label {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.filter-group select {
+    min-width: 150px;
+}
+
+.table-wrapper {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow-x: auto;
+}
+
+body.dark-mode .table-wrapper {
+    background-color: #1E1E1E;
+}
+
+.subscriptions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.subscriptions-table thead {
+    background-color: var(--light-gray);
+}
+
+body.dark-mode .subscriptions-table thead {
+    background-color: #333;
+}
+
+.subscriptions-table th {
+    padding: var(--spacing-lg);
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-dark);
+    border-bottom: 2px solid var(--medium-gray);
+}
+
+body.dark-mode .subscriptions-table th {
+    color: var(--white);
+    border-bottom-color: #444;
+}
+
+.subscriptions-table td {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--medium-gray);
+    color: var(--dark-gray);
+}
+
+body.dark-mode .subscriptions-table td {
+    border-bottom-color: #333;
+    color: var(--light-gray);
+}
+
+.subscriptions-table tbody tr:hover {
+    background-color: var(--light-gray);
+}
+
+body.dark-mode .subscriptions-table tbody tr:hover {
+    background-color: #333;
+}
+
+.subscription-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.status-paid {
+    background-color: rgba(81, 207, 102, 0.2);
+    color: var(--success);
+}
+
+.status-pending {
+    background-color: rgba(255, 212, 59, 0.2);
+    color: #FFD43B;
+}
+
+.status-overdue {
+    background-color: rgba(255, 107, 107, 0.2);
+    color: var(--danger);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+body.dark-mode .page-header {
+    border-bottom-color: #333;
+}
+
+.page-header h2 {
+    margin: 0;
+    color: var(--primary-dark);
+}
+
+body.dark-mode .page-header h2 {
+    color: var(--white);
+}

@@ -1,0 +1,128 @@
+/* ================================
+   Reports Styles
+   ================================ */
+
+.reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--medium-gray);
+}
+
+body.dark-mode .reports-header {
+    border-bottom-color: #333;
+}
+
+.reports-header h2 {
+    margin: 0;
+    color: var(--primary-dark);
+}
+
+body.dark-mode .reports-header h2 {
+    color: var(--white);
+}
+
+.report-actions {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.report-tabs {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--medium-gray);
+    overflow-x: auto;
+}
+
+body.dark-mode .report-tabs {
+    border-bottom-color: #333;
+}
+
+.report-tab {
+    background: none;
+    border: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-weight: 600;
+    cursor: pointer;
+    color: #999;
+    border-bottom: 3px solid transparent;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.report-tab:hover {
+    color: var(--accent-gold);
+}
+
+.report-tab.active {
+    color: var(--accent-gold);
+    border-bottom-color: var(--accent-gold);
+}
+
+.report-content {
+    display: none;
+    animation: fadeIn var(--transition-normal);
+}
+
+.report-content.active {
+    display: block;
+}
+
+.report-section {
+    background-color: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .report-section {
+    background-color: #1E1E1E;
+}
+
+.report-section h3 {
+    margin-top: 0;
+    color: var(--primary-dark);
+}
+
+body.dark-mode .report-section h3 {
+    color: var(--white);
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.report-item {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background-color: var(--light-gray);
+    border-radius: var(--radius-md);
+}
+
+body.dark-mode .report-item {
+    background-color: #333;
+}
+
+.report-item span {
+    display: block;
+    color: #666;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+body.dark-mode .report-item span {
+    color: #999;
+}
+
+.report-item p {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--accent-gold);
+}
